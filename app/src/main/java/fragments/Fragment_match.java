@@ -1,0 +1,132 @@
+package fragments;
+
+import android.app.Fragment;
+import android.graphics.Bitmap;
+import android.os.Bundle;
+import android.view.KeyEvent;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.webkit.JsResult;
+import android.webkit.WebChromeClient;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
+import android.widget.Toast;
+
+import com.example.cnm.efafootball.R;
+
+/**
+ * Created by cnm on 2016/11/5.
+ */
+
+public class Fragment_match extends Fragment{
+    private WebView matchWeb;
+    // 需要加载的网页URL地址
+    private String url=
+            "https://www.baidu.com/s?ie=utf-8&f=8&rsv_bp=1&rsv_idx=1&tn=baidu&wd=fragment%E4%B8%AD%E5%8A%A0%E8%BD%BDwebview&oq=FRAGM%26gt%3BNT&rsv_pq=8543a42c0002116d&rsv_t=b2d8%2FWrKBW%2FfBUBkThbhyNbnBmG62L%2B9iA76gXnR%2BXffcRw%2FiaSoH6BWvhw&rqlang=cn&rsv_enter=1&inputT=1953&rsv_sug3=49&rsv_sug1=7&rsv_sug7=100&bs=FRAGMENT";
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_match, container,false);
+        matchWeb=(WebView)view.findViewById(R.id.match_web);
+        initWebView();  //初始化webview
+        return view;
+    }
+    private void initWebView() {
+        matchWeb.setWebViewClient(new WebViewClient() {
+
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                //系统默认会打开系统浏览器去打开网页，为了要显示在自己的webview中必须设置这个属性
+                view.loadUrl(url);
+
+                return super.shouldOverrideUrlLoading(view, url);
+            }
+
+            //加载开始时调用
+
+            @Override
+            public void onPageStarted(WebView view, String url, Bitmap favicon) {
+                super.onPageStarted(view, url, favicon);
+            }
+            // 加载结束时调用
+
+            @Override
+            public void onPageFinished(WebView view, String url) {
+                super.onPageFinished(view, url);
+            }
+
+
+        });
+
+        matchWeb.setWebChromeClient(new WebChromeClient() {
+            //加载进度
+            @Override
+            public void onProgressChanged(WebView view, int newProgress) {
+                super.onProgressChanged(view, newProgress);
+            }
+
+
+            @Override
+            public void onRequestFocus(WebView view) {
+                super.onRequestFocus(view);
+            }
+
+            @Override
+            public void onCloseWindow(WebView window) {
+                super.onCloseWindow(window);
+            }
+
+            @Override
+            public boolean onJsAlert(WebView view, String url, String message, JsResult result) {
+                return super.onJsAlert(view, url, message, result);
+            }
+
+            @Override
+            public boolean onJsConfirm(WebView view, String url, String message, JsResult result) {
+                return super.onJsConfirm(view, url, message, result);
+            }
+
+        });
+
+        matchWeb.loadUrl(url);
+        // 得到setting
+        WebSettings webSettings=matchWeb.getSettings();
+        //设置支持Javascript
+        webSettings.setJavaScriptEnabled(true);
+        //支持的语言类型
+        webSettings.setDefaultTextEncodingName("UTF-8");
+        //设置可以访问文件
+        webSettings.setAllowFileAccess(true);
+
+        webSettings.setDomStorageEnabled(true);
+
+        matchWeb.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View view, int keyCode, KeyEvent keyEvent) {
+                if (keyEvent.getAction() == KeyEvent.ACTION_DOWN) {
+                    if (keyCode == KeyEvent.KEYCODE_BACK ) {
+                        //这里处理返回键事件
+                        if (matchWeb.canGoBack()){
+                            matchWeb.goBack();
+                            Toast.makeText(getActivity(), "ok", Toast.LENGTH_SHORT).show();
+                            return true;
+                        }
+                    }
+                }
+                return false;
+            }
+        });
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        //清除记录
+        matchWeb.clearCache(true);
+        matchWeb.clearHistory();
+        matchWeb.clearFormData();
+        matchWeb.destroy();
+    }
+}
