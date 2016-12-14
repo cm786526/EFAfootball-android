@@ -25,7 +25,7 @@ public class Fragment_home extends Fragment {
     private  WebView homeWeb;
     // 需要加载的网页URL地址
     private String url=
-            "https://www.baidu.com/s?ie=utf-8&f=8&rsv_bp=1&rsv_idx=1&tn=baidu&wd=fragment%E4%B8%AD%E5%8A%A0%E8%BD%BDwebview&oq=FRAGM%26gt%3BNT&rsv_pq=8543a42c0002116d&rsv_t=b2d8%2FWrKBW%2FfBUBkThbhyNbnBmG62L%2B9iA76gXnR%2BXffcRw%2FiaSoH6BWvhw&rqlang=cn&rsv_enter=1&inputT=1953&rsv_sug3=49&rsv_sug1=7&rsv_sug7=100&bs=FRAGMENT";
+            "http://120.76.206.174:8080/efafootball-web/home.html";
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -102,7 +102,8 @@ public class Fragment_home extends Fragment {
         webSettings.setAllowFileAccess(true);
 
         webSettings.setDomStorageEnabled(true);
-
+        //设置可以加载图片资源
+        webSettings.setLoadsImagesAutomatically(true);
         homeWeb.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View view, int keyCode, KeyEvent keyEvent) {

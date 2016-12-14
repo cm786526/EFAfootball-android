@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/EFAfootball.iml" filepath="$PROJECT_DIR$/EFAfootball.iml" />
+      <module fileurl="file://$PROJECT_DIR$/EFAfootball-android.iml" filepath="$PROJECT_DIR$/EFAfootball-android.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
