@@ -14,7 +14,7 @@
 
     <LinearLayout
         android:background="#E0E0E0"
-        android:layout_height="60dp"
+        android:layout_height="50dp"
         android:layout_width="match_parent">
 
         <RelativeLayout
@@ -35,7 +35,7 @@
                 <ImageView
                     android:id="@+id/home_img"
                     android:layout_gravity="center_horizontal"
-                    android:layout_width="30dp"
+                    android:layout_width="25dp"
                     android:paddingTop="5dp"
                     android:src="@drawable/home_checked"
                     android:layout_height="30dp"
@@ -71,8 +71,8 @@
                 <ImageView
                     android:id="@+id/match_img"
                     android:layout_gravity="center_horizontal"
-                    android:layout_height="38dp"
-                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_width="25dp"
                     android:src="@drawable/match_checked"
                     android:paddingTop="5dp">
                 </ImageView>
@@ -107,8 +107,8 @@
                 <ImageView
                     android:id="@+id/team_img"
                     android:layout_gravity="center_horizontal"
-                    android:layout_height="38dp"
-                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_width="25dp"
                     android:src="@drawable/team_checked"
                     android:paddingTop="5dp"
                     android:layout_weight="0.5">
@@ -139,11 +139,11 @@
                 <ImageView
                     android:id="@+id/mine_img"
                     android:layout_gravity="center_horizontal"
-                    android:layout_width="30dp"
+                    android:layout_width="25dp"
                     android:src="@drawable/mine_checked"
                     android:paddingTop="5dp"
                     android:layout_weight="0.5"
-                    android:layout_height="38dp">
+                    android:layout_height="30dp">
                 </ImageView>
 
                 <TextView

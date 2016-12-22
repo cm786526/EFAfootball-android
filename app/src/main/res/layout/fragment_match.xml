@@ -8,20 +8,35 @@
         android:id="@+id/ll_top"
         android:layout_width="match_parent"
         android:orientation="vertical"
-        android:layout_height="48dp"
-        android:background="#CE0000"
+        android:layout_height="50dp"
+        android:background="#12283D"
         >
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <TextView
+            android:layout_height="match_parent"
+            >
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/go_back"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/ll_area_text"
+                android:layout_marginLeft="20dp"/>
+            <ImageView
                 android:layout_width="wrap_content"
-                android:text="赛事详情"
-                android:textSize="17dp"
-                android:textColor="#FFFFFF"
+                android:src="@drawable/nav_logo_league"
                 android:layout_centerInParent="true"
                 android:layout_height="wrap_content"/>
+
+            <ImageView
+                android:id="@+id/share_btn"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:src="@drawable/share"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="20dp"/>
         </RelativeLayout>
 
     </LinearLayout>

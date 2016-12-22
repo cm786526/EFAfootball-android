@@ -67,7 +67,6 @@ public class Fragment_mine extends Fragment {
                 super.onProgressChanged(view, newProgress);
             }
 
-
             @Override
             public void onRequestFocus(WebView view) {
                 super.onRequestFocus(view);
