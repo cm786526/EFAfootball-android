@@ -1,21 +1,26 @@
 package fragments;
 
 import android.app.Fragment;
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.JavascriptInterface;
 import android.webkit.JsResult;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.Toast;
 
+import com.example.cnm.efafootball.MyEventBus;
 import com.example.cnm.efafootball.R;
+
+import org.greenrobot.eventbus.EventBus;
+
+import contants.contants;
 
 /**
  * Created by cnm on 2016/11/5.
@@ -100,8 +105,12 @@ public class Fragment_home extends Fragment {
         webSettings.setDefaultTextEncodingName("UTF-8");
         //设置可以访问文件
         webSettings.setAllowFileAccess(true);
-
+        //写domstorage缓存
         webSettings.setDomStorageEnabled(true);
+        //JavaScript中调用Android原生方法
+        webSettings.setJavaScriptEnabled(true);
+        homeWeb.addJavascriptInterface(new JavaScriptinterface(getContext()),
+                "android");
         //设置可以加载图片资源
         webSettings.setLoadsImagesAutomatically(true);
         homeWeb.setOnKeyListener(new View.OnKeyListener() {
@@ -112,8 +121,10 @@ public class Fragment_home extends Fragment {
                         //这里处理返回键事件
                         if (homeWeb.canGoBack()){
                             homeWeb.goBack();
-                            Toast.makeText(getActivity(), "ok", Toast.LENGTH_SHORT).show();
                             return true;
+                        }
+                        else{
+
                         }
                     }
                 }
@@ -121,7 +132,25 @@ public class Fragment_home extends Fragment {
             }
         });
     }
-
+    public class JavaScriptinterface {
+        Context context;
+        public JavaScriptinterface(Context c) {
+            context= c;
+        }
+        /**
+         * 与js交互时用到的方法，在js里直接调用的
+         */
+        @JavascriptInterface
+        public void JoinTeam() {
+            //添加Android代码
+            EventBus.getDefault().post(new MyEventBus(contants.JOIN_TEAM));
+        }
+        @JavascriptInterface
+        public void MatchSignUp() {
+            //添加Android代码
+            EventBus.getDefault().post(new MyEventBus(contants.MATCH_SIGN_UP));
+        }
+    }
     @Override
     public void onDestroy() {
         super.onDestroy();

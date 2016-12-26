@@ -12,6 +12,9 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import org.greenrobot.eventbus.EventBus;
+
+import contants.contants;
 import fragments.Fragment_home;
 import fragments.Fragment_match;
 import fragments.Fragment_mine;
@@ -41,8 +44,11 @@ public class HomeMainActivity extends Activity implements OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_main);
+        //注册EventBus  
+        EventBus.getDefault().register(this);
         initUI();
         initTab();
+
     }
 
     /**
@@ -221,4 +227,20 @@ public class HomeMainActivity extends Activity implements OnClickListener {
         currentFragment = fragment;
     }
 
+    public void onEventMainThread(MyEventBus event) {
+
+        int msg=event.getMsg();
+        switch (msg){
+            case contants.JOIN_TEAM:
+                clickTab3Layout();
+            case contants.MATCH_SIGN_UP:
+                clickTab2Layout();
+        }
+    }
+
+    @Override
+     protected void onDestroy(){
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);//反注册EventBus  
+     }
 }
