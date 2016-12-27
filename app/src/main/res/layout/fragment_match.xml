@@ -18,8 +18,8 @@
             >
             <ImageView
                 android:id="@+id/go_back"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 android:src="@drawable/go_back"
                 android:layout_centerVertical="true"
                 android:layout_toRightOf="@id/ll_area_text"
@@ -32,8 +32,8 @@
 
             <ImageView
                 android:id="@+id/share_btn"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 android:src="@drawable/share"
                 android:layout_centerVertical="true"
                 android:layout_alignParentRight="true"

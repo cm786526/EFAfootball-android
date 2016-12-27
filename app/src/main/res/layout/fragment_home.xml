@@ -22,17 +22,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="武汉"
-                android:textSize="20dp"
+                android:textSize="18dp"
                 android:gravity="center_vertical"
                 android:textColor="#ffffff"
-                android:layout_marginLeft="20dp" />
+                android:layout_marginLeft="10dp" />
             <ImageView
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:src="@drawable/city_chose"
                 android:layout_centerVertical="true"
                 android:layout_toRightOf="@id/ll_area_text"
-                android:layout_marginLeft="10dp"/>
+                android:layout_marginLeft="5dp"/>
             <ImageView
                 android:layout_width="wrap_content"
                 android:src="@drawable/nav_logo_league"
@@ -41,12 +41,12 @@
 
             <ImageView
                 android:id="@+id/share_btn"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 android:src="@drawable/share"
                 android:layout_centerVertical="true"
                 android:layout_alignParentRight="true"
-                android:layout_marginRight="20dp"/>
+                android:layout_marginRight="15dp"/>
         </RelativeLayout>
 
     </LinearLayout>

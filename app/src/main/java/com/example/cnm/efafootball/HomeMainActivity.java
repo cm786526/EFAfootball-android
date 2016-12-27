@@ -13,6 +13,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 
 import contants.contants;
 import fragments.Fragment_home;
@@ -45,7 +46,7 @@ public class HomeMainActivity extends Activity implements OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_main);
         //注册EventBus  
-        EventBus.getDefault().register(this);
+        EventBus.getDefault().register(HomeMainActivity.this);
         initUI();
         initTab();
 
@@ -156,7 +157,7 @@ public class HomeMainActivity extends Activity implements OnClickListener {
 
         homeImg.setImageResource(R.drawable.home_gray);
         homeTv.setTextColor(getResources().getColor(R.color.bottomtab_normal));
-        matchImg.setImageResource(R.drawable.team_checked);
+        matchImg.setImageResource(R.drawable.match_checked);
         matchTv.setTextColor(getResources().getColor(
                 R.color.bottomtab_press));
         teamImg.setImageResource(R.drawable.team_gray);
@@ -227,7 +228,8 @@ public class HomeMainActivity extends Activity implements OnClickListener {
         currentFragment = fragment;
     }
 
-    public void onEventMainThread(MyEventBus event) {
+    @Subscribe
+    public void onEvent(MyEventBus event) {
 
         int msg=event.getMsg();
         switch (msg){
