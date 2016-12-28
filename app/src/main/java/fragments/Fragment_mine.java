@@ -1,8 +1,12 @@
 package fragments;
 
+import android.app.AlertDialog;
 import android.app.Fragment;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -10,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.JavascriptInterface;
 import android.webkit.JsResult;
+import android.webkit.ValueCallback;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
@@ -25,6 +30,7 @@ import com.example.cnm.efafootball.R;
 public class Fragment_mine extends Fragment {
     private WebView mineWeb;
     private ImageView go_back;
+    ValueCallback<Uri> valueCallback;
     // 需要加载的网页URL地址
     private String url=
             "http://120.76.206.174:8080/efafootball-web/mine.html";
@@ -90,15 +96,57 @@ public class Fragment_mine extends Fragment {
             }
 
             @Override
-            public boolean onJsAlert(WebView view, String url, String message, JsResult result) {
-                return super.onJsAlert(view, url, message, result);
-            }
-
-            @Override
             public boolean onJsConfirm(WebView view, String url, String message, JsResult result) {
                 return super.onJsConfirm(view, url, message, result);
             }
+            // Android > 4.1.1 调用这个方法
+            @SuppressWarnings("unused")
+            public void openFileChooser(ValueCallback<Uri> uploadMsg, String acceptType, String capture){
+                valueCallback = uploadMsg;
+                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+                intent.addCategory(Intent.CATEGORY_OPENABLE);
+                intent.setType("image/*");
+                startActivityForResult(Intent.createChooser(intent, null), 1);
+            }
+            // 3.0 + 调用这个方法
+            @SuppressWarnings("unused")
+            public void openFileChooser(ValueCallback<Uri> uploadMsg, String acceptType){
+                valueCallback = uploadMsg;
+                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+                intent.addCategory(Intent.CATEGORY_OPENABLE);
+                intent.setType("image/*");
+                startActivityForResult(Intent.createChooser(intent, "完成操作需要使用"),1);
+            }
 
+            // Android < 3.0 调用这个方法
+            @SuppressWarnings("unused")
+            public void openFileChooser(ValueCallback<Uri> uploadMsg) {
+                valueCallback= uploadMsg;
+                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+                intent.addCategory(Intent.CATEGORY_OPENABLE);
+                intent.setType("image/*");
+                startActivityForResult(
+                Intent.createChooser(intent, "完成操作需要使用"),1);
+
+            }
+            @Override
+            public boolean onJsAlert(WebView view, String url, String message, final JsResult result) {
+                AlertDialog.Builder b2 = new AlertDialog.Builder(
+                        getActivity())
+                        .setTitle("温馨提示")
+                        .setMessage(message)
+                        .setPositiveButton("确认",
+                            new AlertDialog.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        result.confirm();
+                                    }
+                                });
+                b2.setCancelable(false);
+                b2.create();
+                b2.show();
+                return true;
+            }
         });
 
         mineWeb.loadUrl(url);
@@ -114,7 +162,7 @@ public class Fragment_mine extends Fragment {
         webSettings.setDomStorageEnabled(true);
         //JavaScript中调用Android原生方法
         webSettings.setJavaScriptEnabled(true);
-        mineWeb.addJavascriptInterface(new JavaScriptinterface(getContext()),
+        mineWeb.addJavascriptInterface(new JavaScriptinterface(getActivity()),
                 "android");
         mineWeb.setOnKeyListener(new View.OnKeyListener() {
             @Override

@@ -115,7 +115,7 @@ public class Fragment_team extends Fragment{
         webSettings.setDomStorageEnabled(true);
         //JavaScript中调用Android原生方法
         webSettings.setJavaScriptEnabled(true);
-        teamWeb.addJavascriptInterface(new JavaScriptinterface(getContext()),
+        teamWeb.addJavascriptInterface(new JavaScriptinterface(getActivity()),
                 "android");
 
         teamWeb.setOnKeyListener(new View.OnKeyListener() {

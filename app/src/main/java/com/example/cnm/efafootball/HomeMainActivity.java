@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import contants.contants;
 import fragments.Fragment_home;
@@ -228,15 +229,19 @@ public class HomeMainActivity extends Activity implements OnClickListener {
         currentFragment = fragment;
     }
 
-    @Subscribe
-    public void onEvent(MyEventBus event) {
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onEventMainThread(MyEventBus event) {
 
         int msg=event.getMsg();
         switch (msg){
             case contants.JOIN_TEAM:
                 clickTab3Layout();
+                break;
             case contants.MATCH_SIGN_UP:
                 clickTab2Layout();
+                break;
+            default:
+                break;
         }
     }
 

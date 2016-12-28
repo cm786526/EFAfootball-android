@@ -109,7 +109,7 @@ public class Fragment_home extends Fragment {
         webSettings.setDomStorageEnabled(true);
         //JavaScript中调用Android原生方法
         webSettings.setJavaScriptEnabled(true);
-        homeWeb.addJavascriptInterface(new JavaScriptinterface(getContext()),
+        homeWeb.addJavascriptInterface(new JavaScriptinterface(getActivity()),
                 "android");
         //设置可以加载图片资源
         webSettings.setLoadsImagesAutomatically(true);

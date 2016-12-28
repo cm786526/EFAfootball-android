@@ -115,7 +115,7 @@ public class Fragment_match extends Fragment{
         webSettings.setDomStorageEnabled(true);
         //JavaScript中调用Android原生方法
         webSettings.setJavaScriptEnabled(true);
-        matchWeb.addJavascriptInterface(new JavaScriptinterface(getContext()),
+        matchWeb.addJavascriptInterface(new JavaScriptinterface(getActivity()),
                 "android");
 
         matchWeb.setOnKeyListener(new View.OnKeyListener() {
