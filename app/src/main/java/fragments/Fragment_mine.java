@@ -23,6 +23,10 @@ import android.widget.ImageView;
 
 import com.example.cnm.efafootball.R;
 
+import contants.contants;
+
+import static android.app.Activity.RESULT_OK;
+
 /**
  * Created by cnm on 2016/11/5.
  */
@@ -106,7 +110,7 @@ public class Fragment_mine extends Fragment {
                 Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
                 intent.addCategory(Intent.CATEGORY_OPENABLE);
                 intent.setType("image/*");
-                startActivityForResult(Intent.createChooser(intent, null), 1);
+                startActivityForResult(Intent.createChooser(intent, null), contants.FILE_CHOOSE);
             }
             // 3.0 + 调用这个方法
             @SuppressWarnings("unused")
@@ -115,7 +119,7 @@ public class Fragment_mine extends Fragment {
                 Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
                 intent.addCategory(Intent.CATEGORY_OPENABLE);
                 intent.setType("image/*");
-                startActivityForResult(Intent.createChooser(intent, "完成操作需要使用"),1);
+                startActivityForResult(Intent.createChooser(intent, "完成操作需要使用"),contants.FILE_CHOOSE);
             }
 
             // Android < 3.0 调用这个方法
@@ -126,7 +130,7 @@ public class Fragment_mine extends Fragment {
                 intent.addCategory(Intent.CATEGORY_OPENABLE);
                 intent.setType("image/*");
                 startActivityForResult(
-                Intent.createChooser(intent, "完成操作需要使用"),1);
+                Intent.createChooser(intent, "完成操作需要使用"),contants.FILE_CHOOSE);
 
             }
             @Override
@@ -191,6 +195,16 @@ public class Fragment_mine extends Fragment {
         @JavascriptInterface
         public void showToast(String ssss) {
             //添加Android代码
+        }
+    }
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        if (requestCode == contants.FILE_CHOOSE) {
+            if (valueCallback == null)
+                return;
+            Uri result = intent == null || resultCode != RESULT_OK ? null : intent.getData();
+            valueCallback.onReceiveValue(result);
+            valueCallback = null;
         }
     }
     @Override
