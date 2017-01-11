@@ -96,14 +96,14 @@ public class HomeMainActivity extends Activity implements OnClickListener {
             // 记录当前Fragment
             currentFragment = homeFragment;
             // 设置图片文本的变化
-            homeImg.setImageResource(R.drawable.home_checked);
+            homeImg.setImageResource(R.drawable.tab_button_home_sel);
             homeTv.setTextColor(getResources()
                     .getColor(R.color.bottomtab_normal));
-            matchImg.setImageResource(R.drawable.match_gray);
+            matchImg.setImageResource(R.drawable.tab_button_match_nor);
             matchTv.setTextColor(getResources().getColor(R.color.bottomtab_normal));
-            teamImg.setImageResource(R.drawable.team_gray);
+            teamImg.setImageResource(R.drawable.tab_button_match_nor);
             teamTv.setTextColor(getResources().getColor(R.color.bottomtab_normal));
-            mineImg.setImageResource(R.drawable.mine_gray);
+            mineImg.setImageResource(R.drawable.tab_button_profile_nor);
             mineTv.setTextColor(getResources().getColor(R.color.bottomtab_normal));
     }
 
@@ -136,14 +136,14 @@ public class HomeMainActivity extends Activity implements OnClickListener {
         addOrShowFragment(getFragmentManager().beginTransaction(), homeFragment);
 
         // 设置底部tab变化
-        homeImg.setImageResource(R.drawable.home_checked);
+        homeImg.setImageResource(R.drawable.tab_button_home_sel);
         homeTv.setTextColor(getResources().getColor(R.color.bottomtab_press));
-        matchImg.setImageResource(R.drawable.match_gray);
+        matchImg.setImageResource(R.drawable.tab_button_match_nor);
         matchTv.setTextColor(getResources().getColor(
                 R.color.bottomtab_normal));
-        teamImg.setImageResource(R.drawable.team_gray);
+        teamImg.setImageResource(R.drawable.tab_button_team_nor);
         teamTv.setTextColor(getResources().getColor(R.color.bottomtab_normal));
-        mineImg.setImageResource(R.drawable.mine_gray);
+        mineImg.setImageResource(R.drawable.tab_button_profile_nor);
         mineTv.setTextColor(getResources().getColor(R.color.bottomtab_normal));
     }
 
@@ -156,14 +156,14 @@ public class HomeMainActivity extends Activity implements OnClickListener {
         }
         addOrShowFragment(getFragmentManager().beginTransaction(), matchFragment);
 
-        homeImg.setImageResource(R.drawable.home_gray);
+        homeImg.setImageResource(R.drawable.tab_button_home_nor);
         homeTv.setTextColor(getResources().getColor(R.color.bottomtab_normal));
-        matchImg.setImageResource(R.drawable.match_checked);
+        matchImg.setImageResource(R.drawable.tab_button_match_sel);
         matchTv.setTextColor(getResources().getColor(
                 R.color.bottomtab_press));
-        teamImg.setImageResource(R.drawable.team_gray);
+        teamImg.setImageResource(R.drawable.tab_button_team_nor);
         teamTv.setTextColor(getResources().getColor(R.color.bottomtab_normal));
-        mineImg.setImageResource(R.drawable.mine_gray);
+        mineImg.setImageResource(R.drawable.tab_button_profile_nor);
         mineTv.setTextColor(getResources().getColor(R.color.bottomtab_normal));
 
     }
@@ -176,14 +176,14 @@ public class HomeMainActivity extends Activity implements OnClickListener {
         }
         addOrShowFragment(getFragmentManager().beginTransaction(), teamFragment);
 
-        homeImg.setImageResource(R.drawable.home_gray);
+        homeImg.setImageResource(R.drawable.tab_button_home_nor);
         homeTv.setTextColor(getResources().getColor(R.color.bottomtab_normal));
-        matchImg.setImageResource(R.drawable.match_gray);
+        matchImg.setImageResource(R.drawable.tab_button_match_nor);
         matchTv.setTextColor(getResources().getColor(
                 R.color.bottomtab_normal));
-        teamImg.setImageResource(R.drawable.team_checked);
+        teamImg.setImageResource(R.drawable.tab_button_team_sel);
         teamTv.setTextColor(getResources().getColor(R.color.bottomtab_press));
-        mineImg.setImageResource(R.drawable.mine_gray);
+        mineImg.setImageResource(R.drawable.tab_button_profile_nor);
         mineTv.setTextColor(getResources().getColor(R.color.bottomtab_normal));
 
     }
@@ -196,14 +196,14 @@ public class HomeMainActivity extends Activity implements OnClickListener {
         }
         addOrShowFragment(getFragmentManager().beginTransaction(), mineFragment);
 
-        homeImg.setImageResource(R.drawable.home_gray);
+        homeImg.setImageResource(R.drawable.tab_button_home_nor);
         homeTv.setTextColor(getResources().getColor(R.color.bottomtab_normal));
-        matchImg.setImageResource(R.drawable.match_gray);
+        matchImg.setImageResource(R.drawable.tab_button_match_nor);
         matchTv.setTextColor(getResources().getColor(
                 R.color.bottomtab_normal));
-        teamImg.setImageResource(R.drawable.team_gray);
+        teamImg.setImageResource(R.drawable.tab_button_team_nor);
         teamTv.setTextColor(getResources().getColor(R.color.bottomtab_normal));
-        mineImg.setImageResource(R.drawable.mine_checked);
+        mineImg.setImageResource(R.drawable.tab_button_profile_sel);
         mineTv.setTextColor(getResources().getColor(R.color.bottomtab_press));
 
     }

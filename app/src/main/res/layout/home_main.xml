@@ -37,7 +37,7 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_width="25dp"
                     android:paddingTop="5dp"
-                    android:src="@drawable/home_checked"
+                    android:src="@drawable/tab_button_home_sel"
                     android:layout_height="30dp"
                     android:layout_weight="0.5">
                 </ImageView>
@@ -73,7 +73,7 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_height="30dp"
                     android:layout_width="25dp"
-                    android:src="@drawable/match_checked"
+                    android:src="@drawable/tab_button_match_nor"
                     android:paddingTop="5dp">
                 </ImageView>
 
@@ -109,7 +109,7 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_height="30dp"
                     android:layout_width="25dp"
-                    android:src="@drawable/team_checked"
+                    android:src="@drawable/tab_button_team_nor"
                     android:paddingTop="5dp"
                     android:layout_weight="0.5">
                 </ImageView>
@@ -140,7 +140,7 @@
                     android:id="@+id/mine_img"
                     android:layout_gravity="center_horizontal"
                     android:layout_width="25dp"
-                    android:src="@drawable/mine_checked"
+                    android:src="@drawable/tab_button_profile_nor"
                     android:paddingTop="5dp"
                     android:layout_weight="0.5"
                     android:layout_height="30dp">
