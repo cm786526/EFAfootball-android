@@ -22,13 +22,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="武汉"
-                android:textSize="18dp"
+                android:textSize="16dp"
                 android:gravity="center_vertical"
                 android:textColor="#ffffff"
                 android:layout_marginLeft="10dp" />
             <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
                 android:src="@drawable/city_chose"
                 android:layout_centerVertical="true"
                 android:layout_toRightOf="@id/ll_area_text"
