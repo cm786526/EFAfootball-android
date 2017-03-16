@@ -98,7 +98,7 @@ public class HomeMainActivity extends Activity implements OnClickListener {
             // 设置图片文本的变化
             homeImg.setImageResource(R.drawable.tab_button_home_sel);
             homeTv.setTextColor(getResources()
-                    .getColor(R.color.bottomtab_normal));
+                    .getColor(R.color.bottomtab_press));
             matchImg.setImageResource(R.drawable.tab_button_match_nor);
             matchTv.setTextColor(getResources().getColor(R.color.bottomtab_normal));
             teamImg.setImageResource(R.drawable.tab_button_match_nor);

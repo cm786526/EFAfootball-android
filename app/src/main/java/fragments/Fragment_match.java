@@ -15,6 +15,7 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.example.cnm.efafootball.R;
 
@@ -25,6 +26,7 @@ import com.example.cnm.efafootball.R;
 public class Fragment_match extends Fragment{
     private WebView matchWeb;
     private ImageView go_back;
+    private long exitTime = 0;
     // 需要加载的网页URL地址
     private String url=
             "http://120.76.206.174:8080/efafootball-web/match.html";
@@ -128,6 +130,14 @@ public class Fragment_match extends Fragment{
                             matchWeb.goBack();
                             return true;
                         }
+                        else if ((System.currentTimeMillis() - exitTime) > 2000) {
+                            Toast.makeText(getActivity(), "再按一次退出程序",
+                                    Toast.LENGTH_SHORT).show();
+                            exitTime = System.currentTimeMillis();
+                        } else {
+                            getActivity().finish();
+                        }
+                        return true;
                     }
                 }
                 return false;

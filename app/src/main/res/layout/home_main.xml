@@ -48,7 +48,7 @@
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
                     android:text="首页"
-                    android:textColor="#7597B3"
+                    android:textColor="@color/bottomtab_press"
                     android:textSize="12dp">
                 </TextView>
             </LinearLayout>
@@ -83,7 +83,7 @@
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
                     android:text="赛事"
-                    android:textColor="#7597B3"
+                    android:textColor="@color/bottomtab_press"
                     android:textSize="12dp">
                 </TextView>
             </LinearLayout>
@@ -120,7 +120,7 @@
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
                     android:text="球队"
-                    android:textColor="#7597B3"
+                    android:textColor="@color/bottomtab_press"
                     android:textSize="12dp">
                 </TextView>
             </LinearLayout>
@@ -152,7 +152,7 @@
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
                     android:text="个人"
-                    android:textColor="#7597B3"
+                    android:textColor="@color/bottomtab_press"
                     android:textSize="12dp">
                 </TextView>
             </LinearLayout>

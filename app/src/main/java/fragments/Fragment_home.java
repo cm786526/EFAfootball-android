@@ -1,8 +1,12 @@
 package fragments;
 
+import android.app.AlertDialog;
 import android.app.Fragment;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -10,10 +14,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.JavascriptInterface;
 import android.webkit.JsResult;
+import android.webkit.ValueCallback;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.example.cnm.efafootball.MyEventBus;
 import com.example.cnm.efafootball.R;
@@ -22,12 +30,17 @@ import org.greenrobot.eventbus.EventBus;
 
 import contants.contants;
 
+import static android.app.Activity.RESULT_OK;
+
 /**
  * Created by cnm on 2016/11/5.
  */
 
 public class Fragment_home extends Fragment {
     private  WebView homeWeb;
+    private ImageView  share_btn;
+    ValueCallback<Uri> valueCallback;
+    private long exitTime = 0;
     // 需要加载的网页URL地址
     private String url=
             "http://120.76.206.174:8080/efafootball-web/home.html";
@@ -36,7 +49,20 @@ public class Fragment_home extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container,false);
         homeWeb=(WebView)view.findViewById(R.id.home_web);
+        share_btn=(ImageView)view.findViewById(R.id.share_btn);
         initWebView();  //初始化webview
+        //添加点击事件
+        share_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String curren_url=homeWeb.getUrl();
+                if(curren_url.equals(contants.MOMENT_PAGE)){
+                    homeWeb.loadUrl(contants.MOMENT_PAGE_NEW);
+                }else if (curren_url.equals(contants.HOME_PAGE)){
+                    homeWeb.loadUrl(contants.MOMENT_PAGE);
+                }
+            }
+        });
         return view;
     }
     private void initWebView() {
@@ -85,13 +111,56 @@ public class Fragment_home extends Fragment {
             }
 
             @Override
-            public boolean onJsAlert(WebView view, String url, String message, JsResult result) {
-                return super.onJsAlert(view, url, message, result);
-            }
-
-            @Override
             public boolean onJsConfirm(WebView view, String url, String message, JsResult result) {
                 return super.onJsConfirm(view, url, message, result);
+            }
+            // Android > 4.1.1 调用这个方法
+            @SuppressWarnings("unused")
+            public void openFileChooser(ValueCallback<Uri> uploadMsg, String acceptType, String capture){
+                valueCallback = uploadMsg;
+                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+                intent.addCategory(Intent.CATEGORY_OPENABLE);
+                intent.setType("image/*");
+                startActivityForResult(Intent.createChooser(intent, null), contants.FILE_CHOOSE);
+            }
+            // 3.0 + 调用这个方法
+            @SuppressWarnings("unused")
+            public void openFileChooser(ValueCallback<Uri> uploadMsg, String acceptType){
+                valueCallback = uploadMsg;
+                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+                intent.addCategory(Intent.CATEGORY_OPENABLE);
+                intent.setType("image/*");
+                startActivityForResult(Intent.createChooser(intent, "完成操作需要使用"),contants.FILE_CHOOSE);
+            }
+
+            // Android < 3.0 调用这个方法
+            @SuppressWarnings("unused")
+            public void openFileChooser(ValueCallback<Uri> uploadMsg) {
+                valueCallback= uploadMsg;
+                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+                intent.addCategory(Intent.CATEGORY_OPENABLE);
+                intent.setType("image/*");
+                startActivityForResult(
+                        Intent.createChooser(intent, "完成操作需要使用"),contants.FILE_CHOOSE);
+
+            }
+            @Override
+            public boolean onJsAlert(WebView view, String url, String message, final JsResult result) {
+                AlertDialog.Builder b2 = new AlertDialog.Builder(
+                        getActivity())
+                        .setTitle("温馨提示")
+                        .setMessage(message)
+                        .setPositiveButton("确认",
+                                new AlertDialog.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        result.confirm();
+                                    }
+                                });
+                b2.setCancelable(false);
+                b2.create();
+                b2.show();
+                return true;
             }
 
         });
@@ -123,9 +192,14 @@ public class Fragment_home extends Fragment {
                             homeWeb.goBack();
                             return true;
                         }
-                        else{
-
+                        else if ((System.currentTimeMillis() - exitTime) > 2000) {
+                            Toast.makeText(getActivity(), "再按一次退出程序",
+                                    Toast.LENGTH_SHORT).show();
+                            exitTime = System.currentTimeMillis();
+                        } else {
+                            getActivity().finish();
                         }
+                        return true;
                     }
                 }
                 return false;
@@ -149,6 +223,16 @@ public class Fragment_home extends Fragment {
         public void MatchSignUp() {
             //添加Android代码
             EventBus.getDefault().post(new MyEventBus(contants.MATCH_SIGN_UP));
+        }
+    }
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        if (requestCode == contants.FILE_CHOOSE) {
+            if (valueCallback == null)
+                return;
+            Uri result = intent == null || resultCode != RESULT_OK ? null : intent.getData();
+            valueCallback.onReceiveValue(result);
+            valueCallback = null;
         }
     }
     @Override
