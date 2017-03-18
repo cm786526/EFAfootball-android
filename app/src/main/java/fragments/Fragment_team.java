@@ -39,7 +39,7 @@ public class Fragment_team extends Fragment{
     private long exitTime = 0;
     // 需要加载的网页URL地址
     private String url=
-            "http://120.76.206.174:8080/efafootball-web/team.html";
+            "http://120.76.206.174:8080/efafootball-web/moment.html";
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

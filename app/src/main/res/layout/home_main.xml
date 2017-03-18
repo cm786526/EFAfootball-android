@@ -83,7 +83,7 @@
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
                     android:text="赛事"
-                    android:textColor="@color/bottomtab_press"
+                    android:textColor="@color/bottomtab_normal"
                     android:textSize="12dp">
                 </TextView>
             </LinearLayout>
@@ -109,7 +109,7 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_height="30dp"
                     android:layout_width="25dp"
-                    android:src="@drawable/tab_button_team_nor"
+                    android:src="@drawable/tab_button_moment_nor"
                     android:paddingTop="5dp"
                     android:layout_weight="0.5">
                 </ImageView>
@@ -119,8 +119,8 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
-                    android:text="球队"
-                    android:textColor="@color/bottomtab_press"
+                    android:text="讨论区"
+                    android:textColor="@color/bottomtab_normal"
                     android:textSize="12dp">
                 </TextView>
             </LinearLayout>
@@ -152,7 +152,7 @@
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
                     android:text="个人"
-                    android:textColor="@color/bottomtab_press"
+                    android:textColor="@color/bottomtab_normal"
                     android:textSize="12dp">
                 </TextView>
             </LinearLayout>

@@ -20,7 +20,7 @@ public class Welcome extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.welcome);
         final SharedPreferences sharedpreferences=getSharedPreferences("test",Context.MODE_PRIVATE);
-        countdowntimer = new MyCountdownTimer(3000, 1000);
+        countdowntimer = new MyCountdownTimer(2000, 1000);
         countdowntimer.start();
         handler.postDelayed(new Runnable() {
 
