@@ -37,7 +37,7 @@ public class Fragment_mine extends Fragment {
     private ImageView go_back;
     ValueCallback<Uri> valueCallback;
     private long exitTime = 0;
-    // ĞèÒª¼ÓÔØµÄÍøÒ³URLµØÖ·
+    // ???????????URL???
     private String url=
             "http://120.76.206.174:8080/efafootball-web/mine.html";
     @Override
@@ -62,19 +62,19 @@ public class Fragment_mine extends Fragment {
 
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                //ÏµÍ³Ä¬ÈÏ»á´ò¿ªÏµÍ³ä¯ÀÀÆ÷È¥´ò¿ªÍøÒ³£¬ÎªÁËÒªÏÔÊ¾ÔÚ×Ô¼ºµÄwebviewÖĞ±ØĞëÉèÖÃÕâ¸öÊôĞÔ
+                //????????????????????????????????????webview?Ğ±??????????????
                 view.loadUrl(url);
 
                 return super.shouldOverrideUrlLoading(view, url);
             }
 
-            //¼ÓÔØ¿ªÊ¼Ê±µ÷ÓÃ
+            //???????????
 
             @Override
             public void onPageStarted(WebView view, String url, Bitmap favicon) {
                 super.onPageStarted(view, url, favicon);
             }
-            // ¼ÓÔØ½áÊøÊ±µ÷ÓÃ
+            // ????????????
 
             @Override
             public void onPageFinished(WebView view, String url) {
@@ -85,7 +85,7 @@ public class Fragment_mine extends Fragment {
         });
 
         mineWeb.setWebChromeClient(new WebChromeClient() {
-            //¼ÓÔØ½ø¶È
+            //???????
             @Override
             public void onProgressChanged(WebView view, int newProgress) {
                 super.onProgressChanged(view, newProgress);
@@ -105,7 +105,7 @@ public class Fragment_mine extends Fragment {
             public boolean onJsConfirm(WebView view, String url, String message, JsResult result) {
                 return super.onJsConfirm(view, url, message, result);
             }
-            // Android > 4.1.1 µ÷ÓÃÕâ¸ö·½·¨
+            // Android > 4.1.1 è°ƒç”¨è¿™ä¸ªæ–¹æ³•
             @SuppressWarnings("unused")
             public void openFileChooser(ValueCallback<Uri> uploadMsg, String acceptType, String capture){
                 valueCallback = uploadMsg;
@@ -114,17 +114,17 @@ public class Fragment_mine extends Fragment {
                 intent.setType("image/*");
                 startActivityForResult(Intent.createChooser(intent, null), contants.FILE_CHOOSE);
             }
-            // 3.0 + µ÷ÓÃÕâ¸ö·½·¨
+            // 3.0 + è°ƒç”¨è¿™ä¸ªæ–¹æ³•
             @SuppressWarnings("unused")
             public void openFileChooser(ValueCallback<Uri> uploadMsg, String acceptType){
                 valueCallback = uploadMsg;
                 Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
                 intent.addCategory(Intent.CATEGORY_OPENABLE);
                 intent.setType("image/*");
-                startActivityForResult(Intent.createChooser(intent, "Íê³É²Ù×÷ĞèÒªÊ¹ÓÃ"),contants.FILE_CHOOSE);
+                startActivityForResult(Intent.createChooser(intent, "å®Œæˆæ“ä½œéœ€è¦ä½¿ç”¨"),contants.FILE_CHOOSE);
             }
 
-            // Android < 3.0 µ÷ÓÃÕâ¸ö·½·¨
+            // Android < 3.0 è°ƒç”¨è¿™ä¸ªæ–¹æ³•
             @SuppressWarnings("unused")
             public void openFileChooser(ValueCallback<Uri> uploadMsg) {
                 valueCallback= uploadMsg;
@@ -132,17 +132,17 @@ public class Fragment_mine extends Fragment {
                 intent.addCategory(Intent.CATEGORY_OPENABLE);
                 intent.setType("image/*");
                 startActivityForResult(
-                Intent.createChooser(intent, "Íê³É²Ù×÷ĞèÒªÊ¹ÓÃ"),contants.FILE_CHOOSE);
+                        Intent.createChooser(intent, "å®Œæˆæ“ä½œéœ€è¦ä½¿ç”¨"),contants.FILE_CHOOSE);
 
             }
             @Override
             public boolean onJsAlert(WebView view, String url, String message, final JsResult result) {
                 AlertDialog.Builder b2 = new AlertDialog.Builder(
                         getActivity())
-                        .setTitle("ÎÂÜ°ÌáÊ¾")
+                        .setTitle("æ¸©é¦¨æç¤º")
                         .setMessage(message)
-                        .setPositiveButton("È·ÈÏ",
-                            new AlertDialog.OnClickListener() {
+                        .setPositiveButton("ç¡®è®¤",
+                                new AlertDialog.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
                                         result.confirm();
@@ -153,20 +153,22 @@ public class Fragment_mine extends Fragment {
                 b2.show();
                 return true;
             }
+
         });
 
+
         mineWeb.loadUrl(url);
-        // µÃµ½setting
+        // ???setting
         WebSettings webSettings=mineWeb.getSettings();
-        //ÉèÖÃÖ§³ÖJavascript
+        //???????Javascript
         webSettings.setJavaScriptEnabled(true);
-        //Ö§³ÖµÄÓïÑÔÀàĞÍ
+        //????????????
         webSettings.setDefaultTextEncodingName("UTF-8");
-        //ÉèÖÃ¿ÉÒÔ·ÃÎÊÎÄ¼ş
+        //?????????????
         webSettings.setAllowFileAccess(true);
-        //Ğ´domstorage»º´æ
+        //Ğ´domstorage????
         webSettings.setDomStorageEnabled(true);
-        //JavaScriptÖĞµ÷ÓÃAndroidÔ­Éú·½·¨
+        //JavaScript?Ğµ???Android???????
         webSettings.setJavaScriptEnabled(true);
         mineWeb.addJavascriptInterface(new JavaScriptinterface(getActivity()),
                 "android");
@@ -175,13 +177,13 @@ public class Fragment_mine extends Fragment {
             public boolean onKey(View view, int keyCode, KeyEvent keyEvent) {
                 if (keyEvent.getAction() == KeyEvent.ACTION_DOWN) {
                     if (keyCode == KeyEvent.KEYCODE_BACK ) {
-                        //ÕâÀï´¦Àí·µ»Ø¼üÊÂ¼ş
+                        //è¿™é‡Œå¤„ç†è¿”å›é”®äº‹ä»¶
                         if (mineWeb.canGoBack()){
                             mineWeb.goBack();
                             return true;
                         }
                         else if ((System.currentTimeMillis() - exitTime) > 2000) {
-                            Toast.makeText(getActivity(), "ÔÙ°´Ò»´ÎÍË³ö³ÌĞò",
+                            Toast.makeText(getActivity(), "å†æŒ‰ä¸€æ¬¡é€€å‡ºç¨‹åº",
                                     Toast.LENGTH_SHORT).show();
                             exitTime = System.currentTimeMillis();
                         } else {
@@ -200,11 +202,11 @@ public class Fragment_mine extends Fragment {
             context= c;
         }
         /**
-         * Óëjs½»»¥Ê±ÓÃµ½µÄ·½·¨£¬ÔÚjsÀïÖ±½Óµ÷ÓÃµÄ
+         * ??js?????????????????js?????????
          */
         @JavascriptInterface
         public void showToast(String ssss) {
-            //Ìí¼ÓAndroid´úÂë
+            //???Android????
         }
     }
     @Override
@@ -220,7 +222,7 @@ public class Fragment_mine extends Fragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        //Çå³ı¼ÇÂ¼
+        //??????
         mineWeb.clearCache(true);
         mineWeb.clearHistory();
         mineWeb.clearFormData();

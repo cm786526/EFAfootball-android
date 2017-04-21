@@ -101,7 +101,7 @@ public class HomeMainActivity extends Activity implements OnClickListener {
                     .getColor(R.color.bottomtab_press));
             matchImg.setImageResource(R.drawable.tab_button_match_nor);
             matchTv.setTextColor(getResources().getColor(R.color.bottomtab_normal));
-            teamImg.setImageResource(R.drawable.tab_button_match_nor);
+            teamImg.setImageResource(R.drawable.tab_button_moment_nor);
             teamTv.setTextColor(getResources().getColor(R.color.bottomtab_normal));
             mineImg.setImageResource(R.drawable.tab_button_profile_nor);
             mineTv.setTextColor(getResources().getColor(R.color.bottomtab_normal));
@@ -141,7 +141,7 @@ public class HomeMainActivity extends Activity implements OnClickListener {
         matchImg.setImageResource(R.drawable.tab_button_match_nor);
         matchTv.setTextColor(getResources().getColor(
                 R.color.bottomtab_normal));
-        teamImg.setImageResource(R.drawable.tab_button_team_nor);
+        teamImg.setImageResource(R.drawable.tab_button_moment_nor);
         teamTv.setTextColor(getResources().getColor(R.color.bottomtab_normal));
         mineImg.setImageResource(R.drawable.tab_button_profile_nor);
         mineTv.setTextColor(getResources().getColor(R.color.bottomtab_normal));
@@ -161,7 +161,7 @@ public class HomeMainActivity extends Activity implements OnClickListener {
         matchImg.setImageResource(R.drawable.tab_button_match_sel);
         matchTv.setTextColor(getResources().getColor(
                 R.color.bottomtab_press));
-        teamImg.setImageResource(R.drawable.tab_button_team_nor);
+        teamImg.setImageResource(R.drawable.tab_button_moment_nor);
         teamTv.setTextColor(getResources().getColor(R.color.bottomtab_normal));
         mineImg.setImageResource(R.drawable.tab_button_profile_nor);
         mineTv.setTextColor(getResources().getColor(R.color.bottomtab_normal));
@@ -181,7 +181,7 @@ public class HomeMainActivity extends Activity implements OnClickListener {
         matchImg.setImageResource(R.drawable.tab_button_match_nor);
         matchTv.setTextColor(getResources().getColor(
                 R.color.bottomtab_normal));
-        teamImg.setImageResource(R.drawable.tab_button_team_sel);
+        teamImg.setImageResource(R.drawable.tab_button_moment_sel);
         teamTv.setTextColor(getResources().getColor(R.color.bottomtab_press));
         mineImg.setImageResource(R.drawable.tab_button_profile_nor);
         mineTv.setTextColor(getResources().getColor(R.color.bottomtab_normal));
@@ -201,7 +201,7 @@ public class HomeMainActivity extends Activity implements OnClickListener {
         matchImg.setImageResource(R.drawable.tab_button_match_nor);
         matchTv.setTextColor(getResources().getColor(
                 R.color.bottomtab_normal));
-        teamImg.setImageResource(R.drawable.tab_button_team_nor);
+        teamImg.setImageResource(R.drawable.tab_button_moment_nor);
         teamTv.setTextColor(getResources().getColor(R.color.bottomtab_normal));
         mineImg.setImageResource(R.drawable.tab_button_profile_sel);
         mineTv.setTextColor(getResources().getColor(R.color.bottomtab_press));

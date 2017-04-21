@@ -51,17 +51,17 @@ public class Fragment_home extends Fragment {
         share_btn=(ImageView)view.findViewById(R.id.share_btn);
         initWebView();  //初始化webview
         //添加点击事件
-        share_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String curren_url=homeWeb.getUrl();
-                if(curren_url.equals(contants.MOMENT_PAGE)){
-                    homeWeb.loadUrl(contants.MOMENT_PAGE_NEW);
-                }else if (curren_url.equals(contants.HOME_PAGE)){
-                    homeWeb.loadUrl(contants.MOMENT_PAGE);
-                }
-            }
-        });
+//        share_btn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                String curren_url=homeWeb.getUrl();
+//                if(curren_url.equals(contants.MOMENT_PAGE)){
+//                    homeWeb.loadUrl(contants.MOMENT_PAGE_NEW);
+//                }else if (curren_url.equals(contants.HOME_PAGE)){
+//                    homeWeb.loadUrl(contants.MOMENT_PAGE);
+//                }
+//            }
+//        });
         return view;
     }
     private void initWebView() {

@@ -34,23 +34,34 @@ import static android.app.Activity.RESULT_OK;
 
 public class Fragment_team extends Fragment{
     private WebView teamWeb;
-    private ImageView go_back;
+    private ImageView go_back,share_btn;
     ValueCallback<Uri> valueCallback;
     private long exitTime = 0;
     // 需要加载的网页URL地址
     private String url=
-            "http://120.76.206.174:8080/efafootball-web/team.html";
+            "http://120.76.206.174:8080/efafootball-web/moment.html";
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_team, container,false);
         teamWeb=(WebView)view.findViewById(R.id.team_web);
         go_back=(ImageView)view.findViewById(R.id.go_back);
+        share_btn=(ImageView)view.findViewById(R.id.share_btn);
         go_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (teamWeb.canGoBack()){
                     teamWeb.goBack();
+                }
+            }
+        });
+        //添加点击事件
+        share_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String curren_url=teamWeb.getUrl();
+                if(curren_url.equals(contants.MOMENT_PAGE)){
+                    teamWeb.loadUrl(contants.MOMENT_PAGE_NEW);
                 }
             }
         });
