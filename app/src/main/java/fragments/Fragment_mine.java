@@ -22,7 +22,7 @@ import android.webkit.WebViewClient;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.example.cnm.efafootball.R;
+import com.apsoft.scfb.efafootball.R;
 
 import contants.contants;
 

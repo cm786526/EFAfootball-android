@@ -1,4 +1,4 @@
-package com.example.cnm.efafootball;
+package com.apsoft.scfb.efafootball;
 
 /**
  * Created by 晴识明月 on 2016/12/26.

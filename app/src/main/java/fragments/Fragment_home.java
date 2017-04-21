@@ -19,12 +19,11 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.example.cnm.efafootball.MyEventBus;
-import com.example.cnm.efafootball.R;
+import com.apsoft.scfb.efafootball.MyEventBus;
+import com.apsoft.scfb.efafootball.R;
 
 import org.greenrobot.eventbus.EventBus;
 

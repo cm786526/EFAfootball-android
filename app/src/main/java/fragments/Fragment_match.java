@@ -17,7 +17,7 @@ import android.webkit.WebViewClient;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.example.cnm.efafootball.R;
+import com.apsoft.scfb.efafootball.R;
 
 /**
  * Created by cnm on 2016/11/5.

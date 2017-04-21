@@ -1,4 +1,4 @@
-package com.example.cnm.efafootball;
+package com.apsoft.scfb.efafootball;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
