@@ -1,4 +1,4 @@
-package com.apsoft.scfb.efafootball;
+package com.apsoft.scfb;
 
 
 import android.app.Activity;
@@ -16,11 +16,11 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
-import contants.contants;
-import fragments.Fragment_home;
-import fragments.Fragment_match;
-import fragments.Fragment_mine;
-import fragments.Fragment_team;
+import com.apsoft.scfb.contants.Contants;
+import com.apsoft.scfb.fragments.FragmentHome;
+import com.apsoft.scfb.fragments.FragmentMatch;
+import com.apsoft.scfb.fragments.FragmentMine;
+import com.apsoft.scfb.fragments.FragmentMoment;
 
 /*
  * &#x4e3b;Activity
@@ -57,10 +57,10 @@ public class HomeMainActivity extends Activity implements OnClickListener {
      * 初始化UI
      */
     private void initUI() {
-        homeFragment = new Fragment_home();
-        teamFragment = new Fragment_team();
-        mineFragment = new Fragment_mine();
-        matchFragment = new Fragment_match();
+        homeFragment = new FragmentHome();
+        teamFragment = new FragmentMoment();
+        mineFragment = new FragmentMine();
+        matchFragment = new FragmentMatch();
         // 添加显示第一个fragment
         getFragmentManager().beginTransaction().add(R.id.fragement_content, homeFragment)
                 .add(R.id.fragement_content, matchFragment,"matchTag")
@@ -131,7 +131,7 @@ public class HomeMainActivity extends Activity implements OnClickListener {
      */
     private void clickTab1Layout() {
         if (homeFragment == null) {
-            homeFragment = new Fragment_home();
+            homeFragment = new FragmentHome();
         }
         addOrShowFragment(getFragmentManager().beginTransaction(), homeFragment);
 
@@ -152,7 +152,7 @@ public class HomeMainActivity extends Activity implements OnClickListener {
      */
     private void clickTab2Layout() {
         if (matchFragment == null) {
-            matchFragment = new Fragment_match();
+            matchFragment = new FragmentMatch();
         }
         addOrShowFragment(getFragmentManager().beginTransaction(), matchFragment);
 
@@ -172,7 +172,7 @@ public class HomeMainActivity extends Activity implements OnClickListener {
      */
     private void clickTab3Layout() {
         if (teamFragment == null) {
-            teamFragment = new Fragment_team();
+            teamFragment = new FragmentMoment();
         }
         addOrShowFragment(getFragmentManager().beginTransaction(), teamFragment);
 
@@ -192,7 +192,7 @@ public class HomeMainActivity extends Activity implements OnClickListener {
      */
     private void clickTab4Layout() {
         if (mineFragment == null) {
-            mineFragment = new Fragment_mine();
+            mineFragment = new FragmentMine();
         }
         addOrShowFragment(getFragmentManager().beginTransaction(), mineFragment);
 
@@ -234,10 +234,10 @@ public class HomeMainActivity extends Activity implements OnClickListener {
 
         int msg=event.getMsg();
         switch (msg){
-            case contants.JOIN_TEAM:
+            case Contants.JOIN_TEAM:
                 clickTab3Layout();
                 break;
-            case contants.MATCH_SIGN_UP:
+            case Contants.MATCH_SIGN_UP:
                 clickTab2Layout();
                 break;
             default:

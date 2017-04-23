@@ -1,4 +1,4 @@
-package fragments;
+package com.apsoft.scfb.fragments;
 
 import android.app.AlertDialog;
 import android.app.Fragment;
@@ -22,9 +22,9 @@ import android.webkit.WebViewClient;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.apsoft.scfb.efafootball.R;
 
-import contants.contants;
+import com.apsoft.scfb.R;
+import com.apsoft.scfb.contants.Contants;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -32,7 +32,7 @@ import static android.app.Activity.RESULT_OK;
  * Created by cnm on 2016/11/5.
  */
 
-public class Fragment_team extends Fragment{
+public class FragmentMoment extends Fragment{
     private WebView teamWeb;
     private ImageView go_back,share_btn;
     ValueCallback<Uri> valueCallback;
@@ -60,8 +60,8 @@ public class Fragment_team extends Fragment{
             @Override
             public void onClick(View v) {
                 String curren_url=teamWeb.getUrl();
-                if(curren_url.equals(contants.MOMENT_PAGE)){
-                    teamWeb.loadUrl(contants.MOMENT_PAGE_NEW);
+                if(curren_url.equals(Contants.MOMENT_PAGE)){
+                    teamWeb.loadUrl(Contants.MOMENT_PAGE_NEW);
                 }
             }
         });
@@ -124,7 +124,7 @@ public class Fragment_team extends Fragment{
                 Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
                 intent.addCategory(Intent.CATEGORY_OPENABLE);
                 intent.setType("image/*");
-                startActivityForResult(Intent.createChooser(intent, null), contants.FILE_CHOOSE);
+                startActivityForResult(Intent.createChooser(intent, null), Contants.FILE_CHOOSE);
             }
             // 3.0 + 调用这个方法
             @SuppressWarnings("unused")
@@ -133,7 +133,7 @@ public class Fragment_team extends Fragment{
                 Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
                 intent.addCategory(Intent.CATEGORY_OPENABLE);
                 intent.setType("image/*");
-                startActivityForResult(Intent.createChooser(intent, "完成操作需要使用"),contants.FILE_CHOOSE);
+                startActivityForResult(Intent.createChooser(intent, "完成操作需要使用"), Contants.FILE_CHOOSE);
             }
 
             // Android < 3.0 调用这个方法
@@ -144,7 +144,7 @@ public class Fragment_team extends Fragment{
                 intent.addCategory(Intent.CATEGORY_OPENABLE);
                 intent.setType("image/*");
                 startActivityForResult(
-                        Intent.createChooser(intent, "完成操作需要使用"),contants.FILE_CHOOSE);
+                        Intent.createChooser(intent, "完成操作需要使用"), Contants.FILE_CHOOSE);
 
             }
             @Override
@@ -223,7 +223,7 @@ public class Fragment_team extends Fragment{
     }
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
-        if (requestCode == contants.FILE_CHOOSE) {
+        if (requestCode == Contants.FILE_CHOOSE) {
             if (valueCallback == null)
                 return;
             Uri result = intent == null || resultCode != RESULT_OK ? null : intent.getData();

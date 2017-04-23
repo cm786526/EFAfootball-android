@@ -1,4 +1,4 @@
-package com.apsoft.scfb.efafootball;
+package com.apsoft.scfb;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.example.cnm.efafootball", appContext.getPackageName());
+        assertEquals("com.apsoft.scfb", appContext.getPackageName());
     }
 }

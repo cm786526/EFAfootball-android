@@ -1,4 +1,4 @@
-package com.apsoft.scfb.efafootball;
+package com.apsoft.scfb;
 
 /**
  * Created by 晴识明月 on 2016/12/26.

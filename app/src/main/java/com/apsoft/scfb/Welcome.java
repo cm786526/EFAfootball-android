@@ -1,4 +1,4 @@
-package com.apsoft.scfb.efafootball;
+package com.apsoft.scfb;
 
 import android.app.Activity;
 import android.content.Context;

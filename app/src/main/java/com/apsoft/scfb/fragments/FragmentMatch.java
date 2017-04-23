@@ -1,4 +1,4 @@
-package fragments;
+package com.apsoft.scfb.fragments;
 
 import android.app.Fragment;
 import android.content.Context;
@@ -17,13 +17,14 @@ import android.webkit.WebViewClient;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.apsoft.scfb.efafootball.R;
+import com.apsoft.scfb.R;
+
 
 /**
  * Created by cnm on 2016/11/5.
  */
 
-public class Fragment_match extends Fragment{
+public class FragmentMatch extends Fragment{
     private WebView matchWeb;
     private ImageView go_back;
     private long exitTime = 0;

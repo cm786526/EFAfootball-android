@@ -1,4 +1,4 @@
-package fragments;
+package com.apsoft.scfb.fragments;
 
 import android.app.AlertDialog;
 import android.app.Fragment;
@@ -22,12 +22,11 @@ import android.webkit.WebViewClient;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.apsoft.scfb.efafootball.MyEventBus;
-import com.apsoft.scfb.efafootball.R;
-
 import org.greenrobot.eventbus.EventBus;
 
-import contants.contants;
+import com.apsoft.scfb.MyEventBus;
+import com.apsoft.scfb.R;
+import com.apsoft.scfb.contants.Contants;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -35,7 +34,7 @@ import static android.app.Activity.RESULT_OK;
  * Created by cnm on 2016/11/5.
  */
 
-public class Fragment_home extends Fragment {
+public class FragmentHome extends Fragment {
     private  WebView homeWeb;
     private ImageView  share_btn;
     ValueCallback<Uri> valueCallback;
@@ -55,10 +54,10 @@ public class Fragment_home extends Fragment {
 //            @Override
 //            public void onClick(View v) {
 //                String curren_url=homeWeb.getUrl();
-//                if(curren_url.equals(contants.MOMENT_PAGE)){
-//                    homeWeb.loadUrl(contants.MOMENT_PAGE_NEW);
-//                }else if (curren_url.equals(contants.HOME_PAGE)){
-//                    homeWeb.loadUrl(contants.MOMENT_PAGE);
+//                if(curren_url.equals(com.apsoft.scfb.Contants.MOMENT_PAGE)){
+//                    homeWeb.loadUrl(com.apsoft.scfb.Contants.MOMENT_PAGE_NEW);
+//                }else if (curren_url.equals(com.apsoft.scfb.Contants.HOME_PAGE)){
+//                    homeWeb.loadUrl(com.apsoft.scfb.Contants.MOMENT_PAGE);
 //                }
 //            }
 //        });
@@ -120,7 +119,7 @@ public class Fragment_home extends Fragment {
                 Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
                 intent.addCategory(Intent.CATEGORY_OPENABLE);
                 intent.setType("image/*");
-                startActivityForResult(Intent.createChooser(intent, null), contants.FILE_CHOOSE);
+                startActivityForResult(Intent.createChooser(intent, null), Contants.FILE_CHOOSE);
             }
             // 3.0 + 调用这个方法
             @SuppressWarnings("unused")
@@ -129,7 +128,7 @@ public class Fragment_home extends Fragment {
                 Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
                 intent.addCategory(Intent.CATEGORY_OPENABLE);
                 intent.setType("image/*");
-                startActivityForResult(Intent.createChooser(intent, "完成操作需要使用"),contants.FILE_CHOOSE);
+                startActivityForResult(Intent.createChooser(intent, "完成操作需要使用"), Contants.FILE_CHOOSE);
             }
 
             // Android < 3.0 调用这个方法
@@ -140,7 +139,7 @@ public class Fragment_home extends Fragment {
                 intent.addCategory(Intent.CATEGORY_OPENABLE);
                 intent.setType("image/*");
                 startActivityForResult(
-                        Intent.createChooser(intent, "完成操作需要使用"),contants.FILE_CHOOSE);
+                        Intent.createChooser(intent, "完成操作需要使用"), Contants.FILE_CHOOSE);
 
             }
             @Override
@@ -216,17 +215,17 @@ public class Fragment_home extends Fragment {
         @JavascriptInterface
         public void JoinTeam() {
             //添加Android代码
-            EventBus.getDefault().post(new MyEventBus(contants.JOIN_TEAM));
+            EventBus.getDefault().post(new MyEventBus(Contants.JOIN_TEAM));
         }
         @JavascriptInterface
         public void MatchSignUp() {
             //添加Android代码
-            EventBus.getDefault().post(new MyEventBus(contants.MATCH_SIGN_UP));
+            EventBus.getDefault().post(new MyEventBus(Contants.MATCH_SIGN_UP));
         }
     }
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
-        if (requestCode == contants.FILE_CHOOSE) {
+        if (requestCode == Contants.FILE_CHOOSE) {
             if (valueCallback == null)
                 return;
             Uri result = intent == null || resultCode != RESULT_OK ? null : intent.getData();
